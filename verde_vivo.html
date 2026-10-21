@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Verde Vivo: plantas, macetas y productos para tu jardín.">
+<title>Verde Vivo | Naturaleza en tu hogar</title>
+<style>
+:root{--verde:#245c42;--verde-claro:#eaf2e7;--crema:#faf8f1;--texto:#26352c;--gris:#68736b;--blanco:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--crema);color:var(--texto);line-height:1.6}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}
+.encabezado{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 7%;background:#fff;box-shadow:0 2px 12px #0000000a}
+.logo{color:var(--verde);font-size:1.4rem;font-weight:800;white-space:nowrap}
+.menu{display:flex;gap:25px}.menu a:hover,footer a:hover{color:#4b8c62}
+.menu-toggle{display:none;border:0;background:transparent;font-size:1.7rem}
+.boton{display:inline-block;border:0;border-radius:9px;padding:13px 21px;background:var(--verde);color:#fff;font-weight:700;text-align:center;transition:transform .2s,background .2s}
+.boton:hover{background:#397950;transform:translateY(-2px)}.boton-chico{padding:9px 14px;white-space:nowrap}
+.portada{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px;padding:75px 7%;background:var(--verde-claro)}
+.portada-texto{max-width:570px}.etiqueta{color:var(--verde);font-size:.78rem;font-weight:800;letter-spacing:2px}
+h1,h2,h3{line-height:1.2}h1{margin:18px 0;font-family:Georgia,serif;font-size:clamp(2.6rem,5vw,4.5rem);letter-spacing:-1.5px}
+.portada-texto p{margin-bottom:25px;color:var(--gris);font-size:1.1rem}
+.portada-imagen{display:flex;min-height:350px;align-items:end;justify-content:center;padding:30px;border-radius:180px 180px 20px 20px;background:linear-gradient(0deg,#173c2ab0,transparent 60%),url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=85") center/cover}
+.portada-imagen span{color:white;font-family:Georgia,serif;font-size:1.5rem;font-style:italic}
+.seccion{padding:80px 7%}.titulo-seccion{margin-bottom:35px;text-align:center}
+.titulo-seccion h2,.contacto h2{margin:12px 0;font-family:Georgia,serif;font-size:clamp(1.9rem,3vw,2.8rem)}
+.titulo-seccion p,.producto-info p,.ventajas-grid p,.contacto p{color:var(--gris)}
+.productos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.producto{overflow:hidden;border:1px solid #e8e8df;border-radius:15px;background:#fff;transition:transform .2s,box-shadow .2s}
+.producto:hover{transform:translateY(-5px);box-shadow:0 12px 30px #203d2414}
+.producto-imagen{display:grid;min-height:170px;place-items:center;font-size:5rem}
+.planta1{background:#e5efdf}.planta2{background:#f6edda}.planta3{background:#f1e4db}.planta4{background:#e0eee8}
+.producto-info{padding:20px}.categoria{color:var(--verde);font-size:.65rem;font-weight:800;letter-spacing:1px}
+.producto-info h3{margin:9px 0;font-size:1.15rem}.producto-info p{min-height:72px;font-size:.9rem}
+.producto-pie{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:15px}
+.producto-pie strong{color:var(--verde);font-size:1.15rem}
+.boton-agregar{padding:9px 12px;border:1px solid var(--verde);border-radius:7px;background:white;color:var(--verde);font-weight:700}
+.boton-agregar:hover{background:var(--verde-claro)}
+.carrito{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:35px;padding:25px;border-radius:12px;background:var(--verde-claro)}
+.carrito h3{margin-bottom:8px}.carrito p{margin-bottom:8px;color:var(--gris)}
+.ventajas{padding:80px 7%;background:#f0eee4}.ventajas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.ventajas-grid article{padding:25px}.ventaja-icono{display:block;margin-bottom:15px;font-size:2.5rem}.ventajas-grid h3{margin-bottom:12px}
+.contacto{display:grid;grid-template-columns:1fr 1fr;gap:60px}.contacto h2{margin-bottom:20px}.contacto>div>p{margin-top:15px}
+.contacto form{display:flex;flex-direction:column;gap:10px}.contacto label{margin-top:5px;font-weight:700}
+.contacto input,.contacto textarea{width:100%;padding:13px;border:1px solid #d9ddd5;border-radius:8px;background:white;color:var(--texto)}
+.contacto input:focus,.contacto textarea:focus{outline:2px solid #7eaa88;border-color:var(--verde)}.contacto textarea{resize:vertical}#respuesta{overflow-wrap:anywhere;font-size:.9rem}
+footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:25px 7%;background:#203d2d;color:white}
+footer .logo{color:white}footer p{font-size:.85rem}
+@media(max-width:1050px){.productos{grid-template-columns:repeat(2,minmax(0,1fr))}.encabezado{gap:14px;padding-inline:4%}.portada,.seccion,.ventajas{padding-inline:5%}}
+@media(max-width:700px){.encabezado{flex-wrap:wrap}.menu-toggle{display:block;margin-left:auto}.encabezado>.boton{display:none}
+.menu{display:none;flex-basis:100%;flex-direction:column;gap:0;padding-top:10px}.menu.abierto{display:flex}.menu a{padding:12px 0;border-top:1px solid #eeeeea}
+.portada{grid-template-columns:1fr;gap:30px;padding-top:50px;padding-bottom:50px}.portada-imagen{min-height:270px}
+.productos{grid-template-columns:1fr}.producto-imagen{min-height:200px}.producto-info p{min-height:auto}
+.ventajas-grid,.contacto{grid-template-columns:1fr;gap:25px}.seccion,.ventajas{padding-top:55px;padding-bottom:55px}
+.carrito{align-items:flex-start;flex-direction:column}footer{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<header class="encabezado" id="inicio">
+  <a href="#inicio" class="logo">🌿 Verde Vivo</a>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav id="menu" class="menu"><a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#ventajas">Ventajas</a><a href="#contacto">Contacto</a></nav>
+  <a href="#productos" class="boton boton-chico">Ver productos (<span id="contador">0</span>)</a>
+</header>
+<main>
+<section class="portada">
+  <div class="portada-texto"><span class="etiqueta">NATURALEZA PARA TU HOGAR</span><h1>Un poco de verde cambia todo.</h1><p>Descubrí plantas, macetas y accesorios para crear espacios más naturales, lindos y llenos de vida.</p><a href="#productos" class="boton">Explorar productos →</a></div>
+  <div class="portada-imagen" role="img" aria-label="Plantas verdes decorando un hogar"><span>Respirá naturaleza.</span></div>
+</section>
+<section class="seccion" id="productos">
+  <div class="titulo-seccion"><span class="etiqueta">NUESTRO CATÁLOGO</span><h2>Encontrá tu próxima planta</h2><p>Productos elegidos para darle vida a tus espacios.</p></div>
+  <div class="productos">
+    <article class="producto"><div class="producto-imagen planta1">🪴</div><div class="producto-info"><span class="categoria">PLANTAS DE INTERIOR</span><h3>Monstera deliciosa</h3><p>Una planta tropical ideal para decorar tu living.</p><div class="producto-pie"><strong>$ 890</strong><button class="boton-agregar" data-nombre="Monstera deliciosa" data-precio="890">Agregar +</button></div></div></article>
+    <article class="producto"><div class="producto-imagen planta2">🌵</div><div class="producto-info"><span class="categoria">FÁCIL CUIDADO</span><h3>Cactus decorativo</h3><p>Pequeño, resistente y perfecto para un escritorio.</p><div class="producto-pie"><strong>$ 350</strong><button class="boton-agregar" data-nombre="Cactus decorativo" data-precio="350">Agregar +</button></div></div></article>
+    <article class="producto"><div class="producto-imagen planta3">🏺</div><div class="producto-info"><span class="categoria">DECORACIÓN</span><h3>Maceta artesanal</h3><p>Diseño minimalista para combinar con tus plantas.</p><div class="producto-pie"><strong>$ 490</strong><button class="boton-agregar" data-nombre="Maceta artesanal" data-precio="490">Agregar +</button></div></div></article>
+    <article class="producto"><div class="producto-imagen planta4">🌱</div><div class="producto-info"><span class="categoria">KITS DE CULTIVO</span><h3>Kit de aromáticas</h3><p>Cultivá albahaca, perejil y menta en casa.</p><div class="producto-pie"><strong>$ 650</strong><button class="boton-agregar" data-nombre="Kit de aromáticas" data-precio="650">Agregar +</button></div></div></article>
+  </div>
+  <div class="carrito"><div><h3>Tu selección</h3><p id="resumen">Todavía no agregaste productos.</p><strong id="total">Total: $ 0</strong></div><button class="boton" id="vaciar">Vaciar selección</button></div>
+</section>
+<section class="ventajas" id="ventajas"><div class="titulo-seccion"><span class="etiqueta">¿POR QUÉ VERDE VIVO?</span><h2>Pequeños detalles, grandes cambios</h2></div>
+  <div class="ventajas-grid"><article><span class="ventaja-icono">🌿</span><h3>Calidad seleccionada</h3><p>Elegimos productos pensando en su calidad y cuidado.</p></article><article><span class="ventaja-icono">💚</span><h3>Atención cercana</h3><p>Te orientamos para encontrar la planta ideal para vos.</p></article><article><span class="ventaja-icono">🚚</span><h3>Entrega coordinada</h3><p>Coordinamos la entrega para que recibas tu pedido.</p></article></div>
+</section>
+<section class="seccion contacto" id="contacto">
+  <div><span class="etiqueta">ESTAMOS PARA AYUDARTE</span><h2>Hagamos crecer tus ideas.</h2><p>Escribinos para consultar por productos o realizar un pedido.</p><p><strong>📍 Dirección:</strong> Calle de las Flores 123, Rosario</p><p><strong>📧 Correo:</strong> hola@verdevivo.example</p><p><strong>🕒 Horario:</strong> Lunes a sábado, de 9 a 18 h</p></div>
+  <form id="formulario"><label for="nombre">Tu nombre</label><input type="text" id="nombre" name="nombre" placeholder="Escribí tu nombre" required><label for="correo">Tu correo electrónico</label><input type="email" id="correo" name="correo" placeholder="nombre@correo.com" required><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea><button type="submit" class="boton">Preparar consulta →</button><p id="respuesta" role="status" aria-live="polite"></p></form>
+</section>
+</main>
+<footer><a href="#inicio" class="logo">🌿 Verde Vivo</a><p>© 2026 Verde Vivo. Emprendimiento ficticio para fines educativos.</p><a href="#inicio">Volver arriba ↑</a></footer>
+<script>
+const botonMenu=document.getElementById("menu-toggle");
+const menu=document.getElementById("menu");
+botonMenu.addEventListener("click",()=>{const abierto=menu.classList.toggle("abierto");botonMenu.setAttribute("aria-expanded",abierto);botonMenu.setAttribute("aria-label",abierto?"Cerrar menú":"Abrir menú")});
+menu.querySelectorAll("a").forEach(enlace=>enlace.addEventListener("click",()=>{menu.classList.remove("abierto");botonMenu.setAttribute("aria-expanded","false");botonMenu.setAttribute("aria-label","Abrir menú")}));
+const seleccion=[];
+const contador=document.getElementById("contador");
+const resumen=document.getElementById("resumen");
+const total=document.getElementById("total");
+const formatoPrecio=numero=>"$ "+numero.toLocaleString("es-UY");
+function actualizarCarrito(){contador.textContent=seleccion.length;resumen.textContent=seleccion.length?seleccion.map(p=>`${p.nombre} (${formatoPrecio(p.precio)})`).join(" · "):"Todavía no agregaste productos.";const suma=seleccion.reduce((acumulado,p)=>acumulado+p.precio,0);total.textContent="Total: "+formatoPrecio(suma)}
+document.querySelectorAll(".boton-agregar").forEach(boton=>boton.addEventListener("click",()=>{seleccion.push({nombre:boton.dataset.nombre,precio:Number(boton.dataset.precio)});actualizarCarrito();boton.textContent="¡Agregado ✓";setTimeout(()=>boton.textContent="Agregar +",1000)}));
+document.getElementById("vaciar").addEventListener("click",()=>{seleccion.length=0;actualizarCarrito()});
+document.getElementById("formulario").addEventListener("submit",evento=>{evento.preventDefault();const nombre=document.getElementById("nombre").value.trim();const correo=document.getElementById("correo").value.trim();const mensaje=document.getElementById("mensaje").value.trim();const respuesta=document.getElementById("respuesta");if(!nombre||!correo||!mensaje){respuesta.textContent="Completá todos los campos.";return}const asunto=encodeURIComponent("Consulta desde Verde Vivo");const cuerpo=encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${correo}\n\nMensaje:\n${mensaje}`);respuesta.textContent="Se abrirá tu aplicación de correo para enviar la consulta.";window.location.href=`mailto:hola@verdevivo.example?subject=${asunto}&body=${cuerpo}`});
+</script>
+</body>
+</html>
